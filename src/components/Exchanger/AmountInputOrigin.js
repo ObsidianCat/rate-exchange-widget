@@ -7,7 +7,7 @@ class AmountInputOrigin extends React.Component{
 
   render(){
     return (
-      <InputNumber min={1} defaultValue={this.props.exchange.amount} onChange={this.props.updateOriginAmount} />
+      <InputNumber min={1} value={this.props.exchange.amount} onChange={this.props.updateOriginAmount} />
     )
   }
 }

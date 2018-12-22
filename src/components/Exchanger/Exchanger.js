@@ -5,7 +5,9 @@ import CurrencySelect from "./CurrencySelect";
 import AmountInputOrigin from "./AmountInputOrigin";
 import AmountInputTarget from "./AmountInputTarget";
 import { CURRENCY_ORIGIN, CURRENCY_TARGET } from "./constants";
-import { Button, Radio, Icon } from "antd";
+import { Button} from "antd";
+import './Exchanger.css';
+import { Card } from 'antd';
 
 class Exchanger extends React.Component {
   componentDidMount() {
@@ -18,35 +20,42 @@ class Exchanger extends React.Component {
   }
   render() {
     return (
-      <div>
-        <CurrencySelect
-          exchangeRates={this.props.exchangeRates}
-          selected={this.props.exchange.originCurrency}
-          curType={CURRENCY_ORIGIN}
-        />
-        <AmountInputOrigin />
+      <Card className='exchanger'>
+        <div className='origin'>
+          <CurrencySelect
+            exchangeRates={this.props.exchangeRates}
+            selected={this.props.exchange.originCurrency}
+            curType={CURRENCY_ORIGIN}
+          />
+          <AmountInputOrigin />
+        </div>
+
         <div>
           <Button
             type="primary"
             icon="swap"
             size={"small"}
             onClick={this.handleSwap}
+            className='swap-btn'
           >
             Swap
           </Button>
         </div>
-        <CurrencySelect
-          exchangeRates={this.props.exchangeRates}
-          selected={this.props.exchange.targetCurrency}
-          curType={CURRENCY_TARGET}
-        />
-        <AmountInputTarget
-          originAmount={this.props.exchange.amount}
-          exchangeRate={
-            this.props.exchangeRates[this.props.exchange.targetCurrency]
-          }
-        />
-      </div>
+        <div className='target'>
+          <CurrencySelect
+            exchangeRates={this.props.exchangeRates}
+            selected={this.props.exchange.targetCurrency}
+            curType={CURRENCY_TARGET}
+          />
+          <AmountInputTarget
+            originAmount={this.props.exchange.amount}
+            exchangeRate={
+              this.props.exchangeRates[this.props.exchange.targetCurrency]
+            }
+          />
+        </div>
+
+      </Card>
     );
   }
 }

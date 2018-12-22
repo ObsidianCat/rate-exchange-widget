@@ -1,0 +1,33 @@
+.exchanger{
+  width: 400px;
+  margin: 10px auto 10px auto;
+}
+
+.exchanger .ant-card-body{
+  margin: 0;
+  padding: 0;
+}
+
+.origin, .target{
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  padding: 20px 5px;
+}
+.target {
+  background-color: #0000000f;
+}
+
+.target input:hover{
+  border: 1px solid #d9d9d9;
+}
+
+.origin > *, .target > * {
+  margin: 10px;
+}
+
+.swap-btn{
+  position: absolute;
+  margin-top: -10px;
+  left: 10px;
+}
