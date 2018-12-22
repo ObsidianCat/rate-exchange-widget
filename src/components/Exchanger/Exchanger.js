@@ -8,7 +8,6 @@ import { CURRENCY_ORIGIN, CURRENCY_TARGET } from "./constants";
 import { Button} from "antd";
 import './Exchanger.css';
 import { Card } from 'antd';
-
 class Exchanger extends React.Component {
   componentDidMount() {
     this.props.fetchExchangeRates();
