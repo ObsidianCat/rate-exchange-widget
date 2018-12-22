@@ -23,7 +23,7 @@ export default function exchange(state = defaultState, action) {
     case SET_TARGET_CURRENCY_TYPE:
       return Object.assign({}, state, { targetCurrency: action.payload });
     case SET_AMOUNT:
-      return Object.assign({}, state, { amount: Number(action.payload).toFixed(2) });
+      return Object.assign({}, state, { amount: action.payload });
     default:
       return state;
   }
