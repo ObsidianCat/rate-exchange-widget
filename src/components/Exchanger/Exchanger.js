@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchExchangeRates, swapCurrencyType } from "../../actions";
+import { fetchExchangeRates, swapCurrencyType, doSwap } from "../../actions";
 import CurrencySelect from "./CurrencySelect";
 import AmountInputOrigin from "./AmountInputOrigin";
 import AmountInputTarget from "./AmountInputTarget";
@@ -14,8 +14,9 @@ class Exchanger extends React.Component {
   }
 
   handleSwap = ()=>{
-    this.props.swapCurrencyType()
-    this.props.fetchExchangeRates()
+    this.props.doSwap()
+    // this.props.swapCurrencyType()
+    // this.props.fetchExchangeRates()
   }
   render() {
     return (
@@ -66,5 +67,5 @@ const mapStateToProps = ({ exchangeRates, exchange }) => ({
 
 export default connect(
   mapStateToProps,
-  { fetchExchangeRates, swapCurrencyType,  }
+  { fetchExchangeRates, swapCurrencyType, doSwap  }
 )(Exchanger);
