@@ -8,16 +8,12 @@ import { CURRENCY_ORIGIN, CURRENCY_TARGET } from "./constants";
 import { Button} from "antd";
 import './Exchanger.css';
 import { Card } from 'antd';
-class Exchanger extends React.Component {
+
+export class ExchangerComponent extends React.Component {
   componentDidMount() {
     this.props.fetchExchangeRates();
   }
 
-  handleSwap = ()=>{
-    this.props.doSwap()
-    // this.props.swapCurrencyType()
-    // this.props.fetchExchangeRates()
-  }
   render() {
     return (
       <Card className='exchanger'>
@@ -35,7 +31,7 @@ class Exchanger extends React.Component {
             type="primary"
             icon="swap"
             size={"small"}
-            onClick={this.handleSwap}
+            onClick={this.props.doSwap}
             className='swap-btn'
           >
             Swap
@@ -68,4 +64,4 @@ const mapStateToProps = ({ exchangeRates, exchange }) => ({
 export default connect(
   mapStateToProps,
   { fetchExchangeRates, swapCurrencyType, doSwap  }
-)(Exchanger);
+)(ExchangerComponent);

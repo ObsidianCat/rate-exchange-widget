@@ -1,6 +1,6 @@
 import React from "react";
 import { Select } from "antd";
-import connect from "react-redux/es/connect/connect";
+import { connect } from "react-redux";
 import { setCurrencyTypeTarget, setCurrencyTypeOrigin } from "../../actions";
 import { CURRENCY_ORIGIN } from "./constants";
 

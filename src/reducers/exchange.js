@@ -5,7 +5,7 @@ import {
   SWAP_CURRENCY_TYPE
 } from "../actions/actionTypes";
 
-const defaultState = {
+export const defaultState = {
   originCurrency: "EUR",
   targetCurrency: "USD",
   amount: 50

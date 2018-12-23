@@ -1,6 +1,6 @@
 import { InputNumber } from 'antd';
 import React from "react";
-import connect from "react-redux/es/connect/connect";
+import { connect } from "react-redux";
 import {updateOriginAmount} from "../../actions";
 
 class AmountInputOrigin extends React.Component{
