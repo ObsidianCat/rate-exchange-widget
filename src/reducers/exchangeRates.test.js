@@ -1,6 +1,7 @@
 import { FETCH_RATES } from "../actions/actionTypes";
 import exchangeRates from "./exchangeRates"
 
+//Example of how I would approach testing of reducers. The second reducer of this app can be tested in similar fashion
 describe('exchangeRates reducer', () => {
   it('should return the initial state', () => {
     expect(exchangeRates(undefined, {})).toMatchSnapshot()

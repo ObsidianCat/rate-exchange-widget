@@ -13,25 +13,31 @@ const mockProps = {
   doSwap: jest.fn()
 }
 
-beforeAll(()=>{
-  wrapper =  shallow(<ExchangerComponent {...mockProps}/>);
+describe("Exchanger Component", ()=>{
+ //Example of minimal testing for one component
+ //3 things should be tested - rendering without crashing, life cycle methods, response to changes (user interactions)
+
+  beforeAll(()=>{
+    wrapper =  shallow(<ExchangerComponent {...mockProps}/>);
+  })
+  afterAll(()=>{
+    wrapper.unmount()
+  })
+
+  it('should render as snapshot', () => {
+    console.log(wrapper.props)
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should request exchange rates after mount', () => {
+    wrapper.instance().componentDidMount()
+    expect(mockProps.fetchExchangeRates).toBeCalled()
+  });
+
+  it('should do swap', () => {
+    wrapper.find('.swap-btn').simulate('click')
+    expect(mockProps.doSwap).toBeCalled()
+  });
 })
-afterAll(()=>{
-  wrapper.unmount()
-})
 
-it('should render as snapshot', () => {
-  console.log(wrapper.props)
-  expect(wrapper).toMatchSnapshot();
-});
-
-it('should request exchange rates after mount', () => {
-  wrapper.instance().componentDidMount()
-  expect(mockProps.fetchExchangeRates).toBeCalled()
-});
-
-it('should do swap', () => {
-  wrapper.find('.swap-btn').simulate('click')
-  expect(mockProps.doSwap).toBeCalled()
-});
 
