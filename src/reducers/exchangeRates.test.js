@@ -1,20 +1,20 @@
 import { FETCH_RATES } from "../actions/actionTypes";
-import exchangeRates from "./exchangeRates"
+import exchangeRates from "./exchangeRates";
 
 //Example of how I would approach testing of reducers. The second reducer of this app can be tested in the similar manner
-describe('exchangeRates reducer', () => {
-  it('should return the initial state', () => {
-    expect(exchangeRates(undefined, {})).toMatchSnapshot()
-  })
+describe("exchangeRates reducer", () => {
+  it("should return the initial state", () => {
+    expect(exchangeRates(undefined, {})).toMatchSnapshot();
+  });
 
-  it('should populate state with received data', () => {
+  it("should populate state with received data", () => {
     const mockFetchRatesAction = {
       type: FETCH_RATES,
       payload: {
-        "USD": 321.97,
-        "CAD": 1.5641,
-        }
-    }
-    expect(exchangeRates({},mockFetchRatesAction)).toMatchSnapshot()
-  })
-})
+        USD: 321.97,
+        CAD: 1.5641
+      }
+    };
+    expect(exchangeRates({}, mockFetchRatesAction)).toMatchSnapshot();
+  });
+});

@@ -6,7 +6,6 @@ import * as types from "./actionTypes";
 import { EXCHANGE_API_BASE } from "./utils";
 import { defaultState as exchangeState } from "../reducers/exchange";
 
-
 //Example of how I would approach testing of synchronous and  asynchronous action creators
 describe("exchangeActions synchronous actions", () => {
   it("should create an action to update origin amount", () => {
@@ -46,8 +45,7 @@ describe("exchangeActions asynchronous actions", () => {
   });
 
   it("should update origin currency and fetch rates for the new currency", () => {
-
-    const newCurrency = "USD"
+    const newCurrency = "USD";
     moxios.stubRequest(`${EXCHANGE_API_BASE}?base=${newCurrency}`, {
       status: 200,
       response: ratesResponseMock
@@ -63,10 +61,14 @@ describe("exchangeActions asynchronous actions", () => {
         payload: ratesResponseMock.rates
       }
     };
-    return store.dispatch(actions.setCurrencyTypeOrigin(newCurrency)).then(() => {
-      const actions = store.getActions();
-      expect(actions[0]).toEqual(expectedActions[types.FETCH_RATES]);
-      expect(actions[1]).toEqual(expectedActions[types.SET_ORIGIN_CURRENCY_TYPE]);
-    });
+    return store
+      .dispatch(actions.setCurrencyTypeOrigin(newCurrency))
+      .then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual(expectedActions[types.FETCH_RATES]);
+        expect(actions[1]).toEqual(
+          expectedActions[types.SET_ORIGIN_CURRENCY_TYPE]
+        );
+      });
   });
 });
