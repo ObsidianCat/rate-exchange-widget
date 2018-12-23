@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`exchangeRates reducer should populate state with received data 1`] = `
+Object {
+  "CAD": 1.5641,
+  "USD": 321.97,
+}
+`;
+
+exports[`exchangeRates reducer should return the initial state 1`] = `Object {}`;

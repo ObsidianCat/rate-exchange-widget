@@ -10,8 +10,14 @@ import './Exchanger.css';
 import { Card } from 'antd';
 
 export class ExchangerComponent extends React.Component {
+
   componentDidMount() {
     this.props.fetchExchangeRates();
+    this.fetcherRef = setInterval(this.props.fetchExchangeRates, 100000);
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.fetcherRef)
   }
 
   render() {
