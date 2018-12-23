@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render as snapshot 1`] = `
+exports[`Exchanger Component should render as snapshot 1`] = `
 <Card
   className="exchanger"
 >
