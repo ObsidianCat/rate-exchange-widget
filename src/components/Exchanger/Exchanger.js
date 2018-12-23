@@ -12,8 +12,6 @@ import { Card } from "antd";
 export class ExchangerComponent extends React.Component {
   componentDidMount() {
     this.props.fetchExchangeRates();
-
-    //Should do something smarter, and cancel pending request number 1, if already received data from request number 2
     this.fetcherRef = setInterval(this.props.fetchExchangeRates, 10000);
   }
 
