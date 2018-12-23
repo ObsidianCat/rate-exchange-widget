@@ -1,5 +1,4 @@
-import axios from "axios";
-import * as CONSTANTS from "./actionTypes";
+import * as types from "./actionTypes";
 import {
   SET_ORIGIN_CURRENCY_TYPE,
   SET_TARGET_CURRENCY_TYPE
@@ -13,7 +12,7 @@ export function setCurrencyTypeOrigin(currencyType) {
   return async function setCurrencyTypeOriginThunk(dispatch) {
     try {
       const response = await getRates(currencyType);
-      dispatch({ type: CONSTANTS.FETCH_RATES, payload: response.data.rates });
+      dispatch({ type: types.FETCH_RATES, payload: response.data.rates });
       dispatch({ type: SET_ORIGIN_CURRENCY_TYPE, payload: currencyType });
     } catch (error) {
       console.error(error);
@@ -26,7 +25,7 @@ export function setCurrencyTypeTarget(payload) {
 }
 
 export function updateOriginAmount(payload) {
-  return { type: CONSTANTS.SET_AMOUNT, payload };
+  return { type: types.SET_AMOUNT, payload };
 }
 
 export function swapCurrencyType() {
@@ -41,9 +40,9 @@ export function doSwap() {
       exchangeRates,
       exchange.targetCurrency
     );
-    dispatch({ type: CONSTANTS.SWAP_CURRENCY_TYPE });
+    dispatch({ type: types.SWAP_CURRENCY_TYPE });
     const response = await getRates(getState().exchange.originCurrency);
-    dispatch({ type: CONSTANTS.FETCH_RATES, payload: response.data.rates });
+    dispatch({ type: types.FETCH_RATES, payload: response.data.rates });
     dispatch({ type: SET_AMOUNT, payload: futureAmountOrigin });
   };
 }

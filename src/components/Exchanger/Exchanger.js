@@ -5,25 +5,24 @@ import CurrencySelect from "./CurrencySelect";
 import AmountInputOrigin from "./AmountInputOrigin";
 import AmountInputTarget from "./AmountInputTarget";
 import { CURRENCY_ORIGIN, CURRENCY_TARGET } from "./constants";
-import { Button} from "antd";
-import './Exchanger.css';
-import { Card } from 'antd';
+import { Button } from "antd";
+import "./Exchanger.css";
+import { Card } from "antd";
 
 export class ExchangerComponent extends React.Component {
-
   componentDidMount() {
     this.props.fetchExchangeRates();
     this.fetcherRef = setInterval(this.props.fetchExchangeRates, 100000);
   }
 
-  componentWillUnmount(){
-    clearInterval(this.fetcherRef)
+  componentWillUnmount() {
+    clearInterval(this.fetcherRef);
   }
 
   render() {
     return (
-      <Card className='exchanger'>
-        <div className='origin'>
+      <Card className="exchanger">
+        <div className="origin">
           <CurrencySelect
             exchangeRates={this.props.exchangeRates}
             selected={this.props.exchange.originCurrency}
@@ -38,12 +37,12 @@ export class ExchangerComponent extends React.Component {
             icon="swap"
             size={"small"}
             onClick={this.props.doSwap}
-            className='swap-btn'
+            className="swap-btn"
           >
             Swap
           </Button>
         </div>
-        <div className='target'>
+        <div className="target">
           <CurrencySelect
             exchangeRates={this.props.exchangeRates}
             selected={this.props.exchange.targetCurrency}
@@ -56,7 +55,6 @@ export class ExchangerComponent extends React.Component {
             }
           />
         </div>
-
       </Card>
     );
   }
@@ -69,5 +67,5 @@ const mapStateToProps = ({ exchangeRates, exchange }) => ({
 
 export default connect(
   mapStateToProps,
-  { fetchExchangeRates, swapCurrencyType, doSwap  }
+  { fetchExchangeRates, swapCurrencyType, doSwap }
 )(ExchangerComponent);

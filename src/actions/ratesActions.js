@@ -1,4 +1,4 @@
-import * as CONSTANTS from "./actionTypes";
+import { FETCH_RATES } from "./actionTypes";
 import { getRates } from "./utils";
 
 export function fetchExchangeRates() {
@@ -6,7 +6,7 @@ export function fetchExchangeRates() {
     try {
       const { exchange } = getState();
       const response = await getRates(exchange.originCurrency);
-      dispatch({ type: CONSTANTS.FETCH_RATES, payload: response.data.rates });
+      dispatch({ type: FETCH_RATES, payload: response.data.rates });
     } catch (error) {
       console.error(error);
     }
